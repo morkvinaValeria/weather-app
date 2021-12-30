@@ -9,5 +9,6 @@ module.exports = {
   },
   port: process.env.PORT,
   host: '0.0.0.0',
-  domain: 'weather-app-zalic.herokuapp.com'
+  domain: 'weather-app-zalic.herokuapp.com',
+  key: process.env.API_KEY
 };

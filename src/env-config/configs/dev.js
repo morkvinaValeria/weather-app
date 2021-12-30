@@ -8,5 +8,6 @@ module.exports = {
     name: process.env.DB_NAME
   },
   port: process.env.PORT,
-  host: '127.0.0.1'
+  host: '127.0.0.1',
+  key: process.env.API_KEY
 };
