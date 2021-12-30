@@ -1,0 +1,53 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "Test\r Valeriia Morkvina, IS-91",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start:dev": "nodemon index.js",
+    "lint": "eslint \"**/*.{js,json}\"",
+    "lint:fix": "eslint \"**/*.{js,json} --fix\"",
+    "prettier": "prettier --check \"**/*.{js,json}\"",
+    "prettier:fix": "prettier --write \"**/*.{js,json}\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{ts,js}": [
+      "npm run format",
+      "npm run lint",
+      "git add"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/morkvinaValeria/weather-app.git"
+  },
+  "author": "Valeriia Morkvina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/morkvinaValeria/weather-app/issues"
+  },
+  "homepage": "https://github.com/morkvinaValeria/weather-app#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "fastify": "^3.25.3",
+    "fastify-cors": "^6.0.2",
+    "fastify-swagger": "^4.13.0",
+    "mongoose": "^6.1.4"
+  },
+  "devDependencies": {
+    "eslint": "^8.5.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.4",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1"
+  }
+}
