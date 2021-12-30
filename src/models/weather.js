@@ -1,48 +1,24 @@
 const mongoose = require('mongoose');
 
-const weatherSchema = new mongoose.Schema({
-  coord: {
-    lon: Number,
-    lat: Number
-  },
-  weather: [
-    {
-      id: Number,
-      main: String,
-      description: String,
-      icon: String
+const weatherSchema = new mongoose.Schema(
+  {
+    weatherObject: {
+      type: JSON,
+      required: true
+    },
+    city: {
+      type: String,
+      required: true
     }
-  ],
-  base: String,
-  main: {
-    temp: Number,
-    pressure: Number,
-    humidity: Number,
-    temp_min: Number,
-    temp_max: Number
   },
-  visibility: Number,
-  wind: {
-    speed: Number,
-    deg: Number
-  },
-  clouds: {
-    all: Number
-  },
-  dt: Number,
-  sys: {
-    type: Number,
-    id: Number,
-    message: Number,
-    country: String,
-    sunrise: Number,
-    sunset: Number
-  },
-  id: Number,
-  name: String,
-  cod: Number
-});
+  {
+    timestamps: {
+      createdAt: 'created_at',
+      updatedAt: 'updated_at'
+    }
+  }
+);
 
-const Weather = mongoose.model('Weather', weatherSchema);
+const WeatherModel = mongoose.model('Weather', weatherSchema);
 
-module.exports = Weather;
+module.exports = WeatherModel;
