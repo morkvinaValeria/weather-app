@@ -1,11 +1,16 @@
 const fastify = require('fastify');
+const fastifyCors = require('fastify-cors');
 const envConfig = require('./src/env-config');
 const connectDB = require('./src/db');
 const swagger = require('fastify-swagger');
 const swaggerConfig = require('./src/env-config/swagger.config');
 const server = fastify();
 
-//!fastify-cors
+server.register(fastifyCors, {
+  origin: ['weather-app-zalic.herokuapp.com'],
+  allowedHeaders: 'Content-Type,Authorization',
+  methods: ['GET', 'POST', 'PUT']
+});
 server.register(swagger, swaggerConfig);
 
 connectDB();

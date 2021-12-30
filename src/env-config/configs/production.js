@@ -8,7 +8,6 @@ module.exports = {
     name: process.env.DB_NAME
   },
   port: process.env.PORT,
-  host: '0.0.0.0'
-  //   domain: 'measurment-assistant.herokuapp.com'
+  host: '0.0.0.0',
+  domain: 'weather-app-zalic.herokuapp.com'
 };
-//!domain
