@@ -2,6 +2,7 @@ const fastify = require('fastify');
 const fastifyCors = require('fastify-cors');
 const envConfig = require('./src/env-config');
 const swagger = require('fastify-swagger');
+const connectDB = require('./src/db');
 const swaggerConfig = require('./src/env-config/swagger.config');
 const { weather } = require('./src/api');
 const server = fastify();
@@ -13,6 +14,7 @@ server.register(fastifyCors, {
 });
 server.register(swagger, swaggerConfig);
 server.route(weather);
+connectDB();
 
 server.listen(envConfig.port || 3000, envConfig.host, (err) => {
   if (err) {

@@ -9,21 +9,20 @@ class Weather {
       const now = new Date();
       now.setHours(now.getHours() - 2);
       const isoTimestamp = now.toISOString();
-      const weatehrResults = WeatherModel.find({
+      const weatehrResults = await WeatherModel.find({
         city: city
       });
-
       const validWeather = weatehrResults.filter(
         (res) => new Date(res.updated_at) >= new Date(isoTimestamp)
       );
-      if (validWeather) {
+      if (validWeather.length) {
         return validWeather.weatherObject;
       }
       const result = await axios({
         url: `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${envConfig.key}`
       });
       if (result.status == 200) {
-        WeatherModel.createOne({
+        await WeatherModel.create({
           weatherObject: result.data,
           city: result.data.name
         });
